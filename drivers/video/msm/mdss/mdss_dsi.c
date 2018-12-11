@@ -2969,7 +2969,7 @@ static int create_cdt_file(struct platform_device *pdev)
 
 	return 0;
 }
-
+/*add kd101n89_LCD & jd9365_LCD ID Distinguish*/
 #define LCDID_PROC_FILE "lcdid"
 #define GPIO_LCD_LDO	100
 #define GPIO_LCD_ID0	140
@@ -3018,7 +3018,9 @@ static struct device_node *mdss_dsi_config_panel(struct platform_device *pdev,
 	char panel_cfg[MDSS_MAX_PANEL_LEN];
 	struct device_node *dsi_pan_node = NULL;
 	int rc = 0;
-
+	int ret = 0;
+	int ret1 = 0;
+	int ret2 = 0;
 	if (!ctrl_pdata) {
 		pr_err("%s: Unable to get the ctrl_pdata\n", __func__);
 		return NULL;
@@ -3030,7 +3032,10 @@ static struct device_node *mdss_dsi_config_panel(struct platform_device *pdev,
 		/* dsi panel cfg not present */
 		pr_warn("%s:%d:dsi specific cfg not present\n",
 			__func__, __LINE__);
-
+	ret = gpio_request(GPIO_LCD_LDO, "GPIO_LCD_LDO");
+	ret1 = gpio_request(GPIO_LCD_ID0, "GPIO_LCD_ID0");
+	ret2 = gpio_request(GPIO_LCD_ID1, "GPIO_LCD_ID1");
+	pr_err("GPIO_LCD_LD0&ID0&ID1 IS READY NOW\n");
 	gpio_direction_output(GPIO_LCD_LDO, 1);
 	msleep(10);
 	gpio_direction_input(GPIO_LCD_ID0);
@@ -3043,9 +3048,9 @@ static struct device_node *mdss_dsi_config_panel(struct platform_device *pdev,
 	gpio_direction_output(GPIO_LCD_LDO, 0);
 	if(status1 == 1) {
 		if (status0 == 1) {
-			strcpy(panel_cfg, "0:qcom,mdss_dsi_boent51021_1200p_video:1:none:cfg:single_dsi");
+			strcpy(panel_cfg, "0:qcom,mdss_dsi_jd9365_800p_video:1:none:cfg:single_dsi");
 		} else {
-			strcpy(panel_cfg, "0:qcom,mdss_dsi_inxnt51021_1200p_video:1:none:cfg:single_dsi");
+			strcpy(panel_cfg, "0:qcom,mdss_dsi_kd101n89_800p_video:1:none:cfg:single_dsi");
 		}
 	}
 	else {
@@ -3066,7 +3071,9 @@ static struct device_node *mdss_dsi_config_panel(struct platform_device *pdev,
 		of_node_put(dsi_pan_node);
 		return NULL;
 	}
-
+	gpio_free(GPIO_LCD_LDO);
+	gpio_free(GPIO_LCD_ID0);
+	gpio_free(GPIO_LCD_ID1);
 	return dsi_pan_node;
 }
 
