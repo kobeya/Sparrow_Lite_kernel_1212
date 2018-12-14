@@ -3048,15 +3048,18 @@ static struct device_node *mdss_dsi_config_panel(struct platform_device *pdev,
 	gpio_direction_output(GPIO_LCD_LDO, 0);
 	if(status1 == 1) {
 		if (status0 == 1) {
-			strcpy(panel_cfg, "0:qcom,mdss_dsi_jd9365_800p_video:1:none:cfg:single_dsi");
+			strcpy(panel_cfg, "0:qcom,mdss_dsi_boent51021_1200p_video:1:none:cfg:single_dsi");
 		} else {
-			strcpy(panel_cfg, "0:qcom,mdss_dsi_kd101n89_800p_video:1:none:cfg:single_dsi");
+			strcpy(panel_cfg, "0:qcom,mdss_dsi_jd9365_800p_video:1:none:cfg:single_dsi");
 		}
 	}
-	else {
-		strcpy(panel_cfg, "0:qcom,mdss_dsi_boyi_hx83100a_800p_video:1:none:cfg:single_dsi");
-	}
-
+        if(status1 == 0) {
+                if (status0 == 1){
+                        strcpy(panel_cfg, "0:qcom,mdss_dsi_boyi_hx83100a_800p_video:1:none:cfg:single_dsi");
+                }else{
+                        strcpy(panel_cfg, "0:qcom,mdss_dsi_kd101n89_800p_video:1:none:cfg:single_dsi");
+                }
+        }
 	/* find panel device node */
 	dsi_pan_node = mdss_dsi_find_panel_of_node(pdev, panel_cfg);
 	if (!dsi_pan_node) {
