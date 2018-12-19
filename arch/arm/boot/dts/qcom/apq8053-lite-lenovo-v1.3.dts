@@ -14,7 +14,7 @@
 /dts-v1/;
 
 #include "apq8053-lite.dtsi"
-#include "apq8053-lite-lenovo-v1.1.dtsi"
+#include "apq8053-lite-lenovo-v1.4.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. APQ8053 Lite Lenovo v1.3 Board";
@@ -26,6 +26,3 @@
 	status = "okay";
 };
 
-&mdss_dsi0 {
-        qcom,dsi-pref-prim-pan = <&dsi_inxnt51021_1200p_video>;
-};

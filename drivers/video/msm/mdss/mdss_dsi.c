@@ -3050,7 +3050,7 @@ static struct device_node *mdss_dsi_config_panel(struct platform_device *pdev,
 		if (status0 == 1) {
 			strcpy(panel_cfg, "0:qcom,mdss_dsi_boent51021_1200p_video:1:none:cfg:single_dsi");
 		} else {
-			strcpy(panel_cfg, "0:qcom,mdss_dsi_jd9365_800p_video:1:none:cfg:single_dsi");
+			strcpy(panel_cfg, "0:qcom,mdss_dsi_starry_800p_video:1:none:cfg:single_dsi");
 		}
 	}
         if(status1 == 0) {

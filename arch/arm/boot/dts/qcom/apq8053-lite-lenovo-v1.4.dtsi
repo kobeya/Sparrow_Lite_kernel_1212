@@ -46,14 +46,18 @@
 		pinctrl-5 = <&ts_rst_output_low>;
 		pinctrl-6 = <&ts_rst_output_high>;
 		pinctrl-7 = <&ts_rst_input>;
+
 		reset-gpios = <&tlmm 64 0x00>;
 		irq-gpios = <&tlmm 65 0x2008>;
 		irq-flags = <2>;
+
 		touchscreen-max-id = <11>;
 		touchscreen-size-x = <800>;
 		touchscreen-size-y = <1280>;
 		touchscreen-max-w = <1024>;
 		touchscreen-max-p = <1024>;
+		/*touchscreen-key-map = <172>, <158>;*/ /*KEY_HOMEPAGE=172, KEY_BACK=158，KEY_MENU=139*/
+
 		goodix,type-a-report = <0>;
 		goodix,driver-send-cfg = <1>;
 		goodix,wakeup-with-reset = <0>;
@@ -65,6 +69,7 @@
 		goodix,auto-update = <1>;
 		goodix,auto-update-cfg = <0>;
 		goodix,power-off-sleep = <0>;
+
 		goodix,cfg-group0 = [
                        42 20 03 00 05 0A 35 10 22 08 32 0D 50 3C 0A 04
                        01 01 00 B4 11 11 44 15 19 1B 14 95 35 FF 3A 3C
@@ -102,7 +107,7 @@
 };
 
 &mdss_dsi0 {
-	qcom,dsi-pref-prim-pan = <&dsi_kd101n89_800p_video>;
+	qcom,dsi-pref-prim-pan = <&dsi_starry_800p_video>;
 	pinctrl-names = "mdss_default", "mdss_sleep";
 	pinctrl-0 = <&mdss_dsi_active &mdss_te_active &mdss_dsi_gpio>;
 	pinctrl-1 = <&mdss_dsi_suspend &mdss_te_suspend &mdss_dsi_gpio>;
@@ -123,6 +128,7 @@
 				00 00 ff 0f
 				00 00 ff 8f];
 };
+
 &mdss_dsi1 {
 	status = "disabled";
 };

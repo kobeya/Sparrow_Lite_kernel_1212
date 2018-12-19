@@ -14,8 +14,8 @@
 */
 
 &mdss_mdp {
-        dsi_jd9365_800p_video: qcom,mdss_dsi_jd9365_800p_video {
-		qcom,mdss-dsi-panel-name = "JD9365 800P MDSS DSI";
+        dsi_starry_800p_video: qcom,mdss_dsi_starry_800p_video {
+		qcom,mdss-dsi-panel-name = "JD9365 STARRY 800P MDSS DSI";
 		qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
 		qcom,mdss-dsi-panel-framerate = <60>;

@@ -255,7 +255,6 @@ dtb-$(CONFIG_ARCH_MSM8953) += msm8953-mtp.dtb \
 	apq8053-lite-lenovo-v1.2.dtb \
 	apq8053-lite-lenovo-v1.3.dtb \
 	apq8053-lite-lenovo-v1.4.dtb \
-	apq8053-lite-lenovo-v1.5.dtb \
 	apq8053-lite-harman-v1.0.dtb \
 	apq8053-lite-lge-v1.0.dtb \
 	apq8053-ext-audio-mtp.dtb \
